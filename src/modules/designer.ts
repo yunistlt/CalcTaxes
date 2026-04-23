@@ -75,8 +75,37 @@ function setupEventListeners(tab: HTMLDivElement) {
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(currentModel, null, 2));
     const a = document.createElement('a');
     a.href = dataStr;
-    a.download = `model_${generateId().substr(0,5)}.json`;
+    a.download = `model_${new Date().toISOString().split('T')[0]}.json`;
     a.click();
+  });
+
+  const importInput = tab.querySelector<HTMLInputElement>("#import-json-input")!;
+  tab.querySelector("#import-json-btn")?.addEventListener('click', () => {
+    importInput.click();
+  });
+
+  importInput.addEventListener('change', (e) => {
+    const file = (e.target as HTMLInputElement).files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const json = JSON.parse(event.target?.result as string);
+        if (json.categories && json.revenue !== undefined) {
+          currentModel = json;
+          const revInput = document.querySelector<HTMLInputElement>("#model-revenue");
+          if (revInput) revInput.value = formatWithSpaces(currentModel.revenue);
+          renderModel();
+          alert("Модель успешно загружена!");
+        } else {
+          alert("Неверный формат файла JSON");
+        }
+      } catch (err) {
+        alert("Ошибка при чтении файла");
+      }
+    };
+    reader.readAsText(file);
   });
 }
 

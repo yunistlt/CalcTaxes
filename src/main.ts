@@ -163,7 +163,9 @@ app.innerHTML = `
           <div id="models-list" style="margin-top: 10px; max-height: 200px; overflow-y: auto; font-size: 0.8rem;"></div>
 
           <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 15px 0;">
-          <button id="export-json-btn" class="btn-secondary" style="width: 100%; font-size: 0.8rem; border-style: dashed;">📌 Закрепить в проекте (JSON)</button>
+          <button id="export-json-btn" class="btn-secondary" style="width: 100%; font-size: 0.8rem; border-style: dashed;">📌 Сохранить в файл (JSON)</button>
+          <button id="import-json-btn" class="btn-secondary" style="width: 100%; font-size: 0.8rem; border-style: dashed; margin-top: 10px;">📂 Загрузить из файла (JSON)</button>
+          <input type="file" id="import-json-input" style="display: none;" accept=".json">
           <button id="export-pdf-btn" class="btn-secondary" style="width: 100%; font-size: 0.8rem; border-style: dashed; margin-top: 10px;">📄 Сохранить в PDF</button>
         </div>
 
