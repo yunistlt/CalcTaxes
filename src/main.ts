@@ -8,6 +8,17 @@ console.log('Версия приложения загружена:', new Date().
 
 // App Layout with Tabs
 app.innerHTML = `
+  <!-- Promo Banner TaskPayer -->
+  <div class="tp-promo-banner">
+    <div class="tp-promo-content">
+      <div class="tp-promo-text">
+        <span class="tp-promo-tag">Новинка</span>
+        <p>Ваш бизнес на сдельной оплате? Автоматизируйте расчеты в <strong>ТаскПайер</strong></p>
+      </div>
+      <a href="https://taskpayer.pro" target="_blank" class="tp-promo-cta">Попробовать бесплатно</a>
+    </div>
+  </div>
+
   <div class="tabs-container">
     <button class="tab-btn active" data-tab="calculator">Калькулятор</button>
     <button class="tab-btn" data-tab="designer">Конструктор модели</button>
