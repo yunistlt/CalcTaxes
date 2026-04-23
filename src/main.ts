@@ -1,6 +1,5 @@
 import './style.css'
 import { initCalculator } from './modules/calculator'
-import { initPLTab } from './modules/pl-charts'
 import { initDesignerTab } from './modules/designer'
 
 const app = document.querySelector<HTMLDivElement>('#app')!
