@@ -123,14 +123,6 @@ app.innerHTML = `
               <input type="number" id="rate-usn15" value="15" step="0.1" class="input-small">
             </div>
             <div class="input-group">
-              <label>НДС на УСН (%)</label>
-              <input type="number" id="rate-vat-usn" value="5" step="0.1" class="input-small">
-            </div>
-            <div class="input-group">
-              <label>Порог НДС УСН (₽)</label>
-              <input type="text" id="threshold-vat-usn" value="60 000 000" class="input-small">
-            </div>
-            <div class="input-group">
               <label>НДС ОСНО (%)</label>
               <input type="number" id="rate-vat-osno" value="20" step="0.1" class="input-small">
             </div>
