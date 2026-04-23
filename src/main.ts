@@ -1,6 +1,9 @@
 import './style.css'
+import { inject } from '@vercel/analytics'
 import { initCalculator } from './modules/calculator'
 import { initDesignerTab } from './modules/designer'
+
+inject()
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 
@@ -314,9 +317,6 @@ app.innerHTML = `
   <footer class="app-footer">
     <div class="footer-content">
       <a href="https://www.zmksoft.ru" target="_blank" class="footer-link">© 2026 ЦехУспех — система управления бизнесом</a>
-      <div class="footer-stats">
-        <img src="https://komarev.com/ghpvc/?username=yunistlt-calctaxes&color=58a6ff&style=flat-square&label=" alt="Hits" style="height: 28px;" />
-      </div>
     </div>
   </footer>
 `
