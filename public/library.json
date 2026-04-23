@@ -1,0 +1,884 @@
+{
+    "8 млн": {
+        "revenue": 8000000,
+        "categories": [
+            {
+                "id": "cat-1",
+                "name": "Прямые производственные расходы",
+                "items": [
+                    {
+                        "id": "item-1",
+                        "name": "Сырье и материалы",
+                        "value": 40,
+                        "unit": "PERCENT",
+                        "percentBase": "REVENUE"
+                    },
+                    {
+                        "id": "item-5",
+                        "name": "Энергоресурсы (цех)",
+                        "value": 3.5,
+                        "unit": "PERCENT",
+                        "percentBase": "REVENUE"
+                    },
+                    {
+                        "id": "item-6",
+                        "name": "Расходные инструменты",
+                        "value": 1.5,
+                        "unit": "PERCENT",
+                        "percentBase": "REVENUE"
+                    },
+                    {
+                        "id": "1772104304524",
+                        "name": "Лизинг",
+                        "value": 200000,
+                        "unit": "RUB",
+                        "percentBase": "REVENUE"
+                    }
+                ]
+            },
+            {
+                "id": "cat-payroll",
+                "name": "ФОТ и налоги",
+                "items": [
+                    {
+                        "id": "item-fot-prod",
+                        "name": "Производственный ФОТ",
+                        "value": 0,
+                        "unit": "RUB",
+                        "isExpanded": true,
+                        "positions": [
+                            {
+                                "id": "pos-1",
+                                "name": "Начальник цеха",
+                                "value": 120000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "pos-2",
+                                "name": "Мастер смены",
+                                "value": 100000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "pos-3",
+                                "name": "Рабочие (оклад + %)",
+                                "value": 13,
+                                "unit": "PERCENT"
+                            },
+                            {
+                                "id": "1772104096191",
+                                "name": "Логист",
+                                "value": 40000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772104105107",
+                                "name": "Снабженец",
+                                "value": 40000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772104429590",
+                                "name": "Инженер",
+                                "value": 2.5,
+                                "unit": "PERCENT"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "item-fot-aup",
+                        "name": "ФОТ АУП и Офис",
+                        "value": 0,
+                        "unit": "RUB",
+                        "isExpanded": true,
+                        "positions": [
+                            {
+                                "id": "pos-4",
+                                "name": "Генеральный директор",
+                                "value": 150000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "pos-5",
+                                "name": "Бухгалтер",
+                                "value": 150000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "pos-6",
+                                "name": "Менеджер по продажам",
+                                "value": 4,
+                                "unit": "PERCENT"
+                            },
+                            {
+                                "id": "1772103353303",
+                                "name": "Маркетолог",
+                                "value": 50000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772103830963",
+                                "name": "Сис. админ.",
+                                "value": 30000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772104344874",
+                                "name": "Юрист",
+                                "value": 30000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772104354322",
+                                "name": "Фин. дир",
+                                "value": 30000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772104365206",
+                                "name": "HR",
+                                "value": 20000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772104404907",
+                                "name": "РОП",
+                                "value": 100000,
+                                "unit": "RUB"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "item-tax-payroll",
+                        "name": "Налоги и взносы (ФОТ)",
+                        "value": 20,
+                        "unit": "PERCENT",
+                        "percentBase": "PAYROLL"
+                    }
+                ]
+            },
+            {
+                "id": "cat-2",
+                "name": "Косвенные (общехозяйственные)",
+                "items": [
+                    {
+                        "id": "item-3",
+                        "name": "Аренда помещений",
+                        "value": 400000,
+                        "unit": "RUB"
+                    },
+                    {
+                        "id": "item-8",
+                        "name": "Связь и интернет",
+                        "value": 40000,
+                        "unit": "RUB"
+                    }
+                ]
+            },
+            {
+                "id": "cat-3",
+                "name": "Административные и Маркетинг",
+                "items": [
+                    {
+                        "id": "item-4",
+                        "name": "Маркетинг и реклама",
+                        "value": 2,
+                        "unit": "PERCENT",
+                        "percentBase": "REVENUE"
+                    }
+                ]
+            },
+            {
+                "id": "cat-4",
+                "name": "Логистика и сбыт",
+                "items": [
+                    {
+                        "id": "item-11",
+                        "name": "Транспортные расходы",
+                        "value": 4,
+                        "unit": "PERCENT",
+                        "percentBase": "REVENUE"
+                    },
+                    {
+                        "id": "item-12",
+                        "name": "Упаковка",
+                        "value": 0.5,
+                        "unit": "PERCENT",
+                        "percentBase": "REVENUE"
+                    }
+                ]
+            }
+        ]
+    },
+    "9 млн": {
+        "revenue": 9000000,
+        "categories": [
+            {
+                "id": "cat-1",
+                "name": "Прямые производственные расходы",
+                "items": [
+                    {
+                        "id": "item-1",
+                        "name": "Сырье и материалы",
+                        "value": 40,
+                        "unit": "PERCENT",
+                        "percentBase": "REVENUE"
+                    },
+                    {
+                        "id": "item-5",
+                        "name": "Энергоресурсы (цех)",
+                        "value": 3.5,
+                        "unit": "PERCENT",
+                        "percentBase": "REVENUE"
+                    },
+                    {
+                        "id": "item-6",
+                        "name": "Расходные инструменты",
+                        "value": 1.5,
+                        "unit": "PERCENT",
+                        "percentBase": "REVENUE"
+                    },
+                    {
+                        "id": "1772104304524",
+                        "name": "Лизинг",
+                        "value": 200000,
+                        "unit": "RUB",
+                        "percentBase": "REVENUE"
+                    }
+                ]
+            },
+            {
+                "id": "cat-payroll",
+                "name": "ФОТ и налоги",
+                "items": [
+                    {
+                        "id": "item-fot-prod",
+                        "name": "Производственный ФОТ",
+                        "value": 0,
+                        "unit": "RUB",
+                        "isExpanded": true,
+                        "positions": [
+                            {
+                                "id": "pos-1",
+                                "name": "Начальник цеха",
+                                "value": 120000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "pos-2",
+                                "name": "Мастер смены",
+                                "value": 100000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "pos-3",
+                                "name": "Рабочие (оклад + %)",
+                                "value": 13,
+                                "unit": "PERCENT"
+                            },
+                            {
+                                "id": "1772104096191",
+                                "name": "Логист",
+                                "value": 40000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772104105107",
+                                "name": "Снабженец",
+                                "value": 40000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772104429590",
+                                "name": "Инженер",
+                                "value": 2.5,
+                                "unit": "PERCENT"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "item-fot-aup",
+                        "name": "ФОТ АУП и Офис",
+                        "value": 0,
+                        "unit": "RUB",
+                        "isExpanded": true,
+                        "positions": [
+                            {
+                                "id": "pos-4",
+                                "name": "Генеральный директор",
+                                "value": 150000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "pos-5",
+                                "name": "Бухгалтер",
+                                "value": 150000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "pos-6",
+                                "name": "Менеджер по продажам",
+                                "value": 4,
+                                "unit": "PERCENT"
+                            },
+                            {
+                                "id": "1772103353303",
+                                "name": "Маркетолог",
+                                "value": 50000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772103830963",
+                                "name": "Сис. админ.",
+                                "value": 30000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772104344874",
+                                "name": "Юрист",
+                                "value": 30000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772104354322",
+                                "name": "Фин. дир",
+                                "value": 30000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772104365206",
+                                "name": "HR",
+                                "value": 20000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772104404907",
+                                "name": "РОП",
+                                "value": 100000,
+                                "unit": "RUB"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "item-tax-payroll",
+                        "name": "Налоги и взносы (ФОТ)",
+                        "value": 20,
+                        "unit": "PERCENT",
+                        "percentBase": "PAYROLL"
+                    }
+                ]
+            },
+            {
+                "id": "cat-2",
+                "name": "Косвенные (общехозяйственные)",
+                "items": [
+                    {
+                        "id": "item-3",
+                        "name": "Аренда помещений",
+                        "value": 400000,
+                        "unit": "RUB"
+                    },
+                    {
+                        "id": "item-8",
+                        "name": "Связь и интернет",
+                        "value": 40000,
+                        "unit": "RUB"
+                    }
+                ]
+            },
+            {
+                "id": "cat-3",
+                "name": "Административные и Маркетинг",
+                "items": [
+                    {
+                        "id": "item-4",
+                        "name": "Маркетинг и реклама",
+                        "value": 2,
+                        "unit": "PERCENT",
+                        "percentBase": "REVENUE"
+                    }
+                ]
+            },
+            {
+                "id": "cat-4",
+                "name": "Логистика и сбыт",
+                "items": [
+                    {
+                        "id": "item-11",
+                        "name": "Транспортные расходы",
+                        "value": 4,
+                        "unit": "PERCENT",
+                        "percentBase": "REVENUE"
+                    },
+                    {
+                        "id": "item-12",
+                        "name": "Упаковка",
+                        "value": 0.5,
+                        "unit": "PERCENT",
+                        "percentBase": "REVENUE"
+                    }
+                ]
+            }
+        ]
+    },
+    "10 млн": {
+        "revenue": 10000000,
+        "categories": [
+            {
+                "id": "cat-1",
+                "name": "Прямые производственные расходы",
+                "items": [
+                    {
+                        "id": "item-1",
+                        "name": "Сырье и материалы",
+                        "value": 40,
+                        "unit": "PERCENT",
+                        "percentBase": "REVENUE"
+                    },
+                    {
+                        "id": "item-5",
+                        "name": "Энергоресурсы (цех)",
+                        "value": 3.5,
+                        "unit": "PERCENT",
+                        "percentBase": "REVENUE"
+                    },
+                    {
+                        "id": "item-6",
+                        "name": "Расходные инструменты",
+                        "value": 1.5,
+                        "unit": "PERCENT",
+                        "percentBase": "REVENUE"
+                    },
+                    {
+                        "id": "1772104304524",
+                        "name": "Лизинг",
+                        "value": 200000,
+                        "unit": "RUB",
+                        "percentBase": "REVENUE"
+                    }
+                ]
+            },
+            {
+                "id": "cat-payroll",
+                "name": "ФОТ и налоги",
+                "items": [
+                    {
+                        "id": "item-fot-prod",
+                        "name": "Производственный ФОТ",
+                        "value": 0,
+                        "unit": "RUB",
+                        "isExpanded": true,
+                        "positions": [
+                            {
+                                "id": "pos-1",
+                                "name": "Начальник цеха",
+                                "value": 100000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "pos-2",
+                                "name": "Мастер смены",
+                                "value": 100000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "pos-3",
+                                "name": "Рабочие (оклад + %)",
+                                "value": 13,
+                                "unit": "PERCENT"
+                            },
+                            {
+                                "id": "1772104096191",
+                                "name": "Логист",
+                                "value": 40000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772104105107",
+                                "name": "Снабженец",
+                                "value": 40000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772104429590",
+                                "name": "Инженер",
+                                "value": 2.5,
+                                "unit": "PERCENT"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "item-fot-aup",
+                        "name": "ФОТ АУП и Офис",
+                        "value": 0,
+                        "unit": "RUB",
+                        "isExpanded": true,
+                        "positions": [
+                            {
+                                "id": "pos-4",
+                                "name": "Генеральный директор",
+                                "value": 150000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "pos-5",
+                                "name": "Бухгалтер",
+                                "value": 150000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "pos-6",
+                                "name": "Менеджер по продажам",
+                                "value": 4,
+                                "unit": "PERCENT"
+                            },
+                            {
+                                "id": "1772103353303",
+                                "name": "Маркетолог",
+                                "value": 50000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772103830963",
+                                "name": "Сис. админ.",
+                                "value": 15000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772104344874",
+                                "name": "Юрист",
+                                "value": 30000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772104354322",
+                                "name": "Фин. дир",
+                                "value": 25000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772104365206",
+                                "name": "HR",
+                                "value": 10000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772104404907",
+                                "name": "РОП",
+                                "value": 100000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772112726940",
+                                "name": "Помощник",
+                                "value": 15000,
+                                "unit": "RUB"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "item-tax-payroll",
+                        "name": "Налоги и взносы (ФОТ)",
+                        "value": 20,
+                        "unit": "PERCENT",
+                        "percentBase": "PAYROLL"
+                    }
+                ]
+            },
+            {
+                "id": "cat-2",
+                "name": "Косвенные (общехозяйственные)",
+                "items": [
+                    {
+                        "id": "item-3",
+                        "name": "Аренда помещений",
+                        "value": 400000,
+                        "unit": "RUB"
+                    },
+                    {
+                        "id": "item-8",
+                        "name": "Связь и интернет",
+                        "value": 40000,
+                        "unit": "RUB"
+                    },
+                    {
+                        "id": "1772111461696",
+                        "name": "Сайт+CRM",
+                        "value": 40000,
+                        "unit": "RUB",
+                        "percentBase": "REVENUE"
+                    }
+                ]
+            },
+            {
+                "id": "cat-3",
+                "name": "Административные и Маркетинг",
+                "items": [
+                    {
+                        "id": "item-4",
+                        "name": "Маркетинг и реклама",
+                        "value": 2,
+                        "unit": "PERCENT",
+                        "percentBase": "REVENUE"
+                    }
+                ]
+            },
+            {
+                "id": "cat-4",
+                "name": "Логистика и сбыт",
+                "items": [
+                    {
+                        "id": "item-11",
+                        "name": "Транспортные расходы",
+                        "value": 4,
+                        "unit": "PERCENT",
+                        "percentBase": "REVENUE"
+                    },
+                    {
+                        "id": "item-12",
+                        "name": "Упаковка",
+                        "value": 0.5,
+                        "unit": "PERCENT",
+                        "percentBase": "REVENUE"
+                    }
+                ]
+            }
+        ]
+    },
+    "Согласованные зарплаты": {
+        "revenue": 10000000,
+        "categories": [
+            {
+                "id": "cat-1",
+                "name": "Прямые производственные расходы",
+                "items": [
+                    {
+                        "id": "item-1",
+                        "name": "Сырье и материалы",
+                        "value": 40,
+                        "unit": "PERCENT",
+                        "percentBase": "REVENUE"
+                    },
+                    {
+                        "id": "item-5",
+                        "name": "Энергоресурсы (цех)",
+                        "value": 3.5,
+                        "unit": "PERCENT",
+                        "percentBase": "REVENUE"
+                    },
+                    {
+                        "id": "item-6",
+                        "name": "Расходные инструменты",
+                        "value": 1.5,
+                        "unit": "PERCENT",
+                        "percentBase": "REVENUE"
+                    },
+                    {
+                        "id": "1772104304524",
+                        "name": "Лизинг",
+                        "value": 200000,
+                        "unit": "RUB",
+                        "percentBase": "REVENUE"
+                    }
+                ]
+            },
+            {
+                "id": "cat-payroll",
+                "name": "ФОТ и налоги",
+                "items": [
+                    {
+                        "id": "item-fot-prod",
+                        "name": "Производственный ФОТ",
+                        "value": 0,
+                        "unit": "RUB",
+                        "isExpanded": true,
+                        "positions": [
+                            {
+                                "id": "pos-1",
+                                "name": "Начальник цеха",
+                                "value": 90000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "pos-2",
+                                "name": "Мастер смены",
+                                "value": 90000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "pos-3",
+                                "name": "Рабочие (оклад + %)",
+                                "value": 13,
+                                "unit": "PERCENT"
+                            },
+                            {
+                                "id": "1772104096191",
+                                "name": "Логист",
+                                "value": 40000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772104105107",
+                                "name": "Снабженец",
+                                "value": 50000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772104429590",
+                                "name": "Инженер",
+                                "value": 2.5,
+                                "unit": "PERCENT"
+                            },
+                            {
+                                "id": "1772197550260",
+                                "name": "Кладовщик (ИО Лариса)",
+                                "value": 10000,
+                                "unit": "RUB"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "item-fot-aup",
+                        "name": "ФОТ АУП и Офис",
+                        "value": 0,
+                        "unit": "RUB",
+                        "isExpanded": true,
+                        "positions": [
+                            {
+                                "id": "pos-4",
+                                "name": "Генеральный директор",
+                                "value": 200000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "pos-5",
+                                "name": "Бухгалтер",
+                                "value": 150000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "pos-6",
+                                "name": "Менеджер по продажам",
+                                "value": 3.9,
+                                "unit": "PERCENT"
+                            },
+                            {
+                                "id": "1772103353303",
+                                "name": "Маркетолог",
+                                "value": 50000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772103830963",
+                                "name": "Сис. админ.",
+                                "value": 15000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772104344874",
+                                "name": "Юрист",
+                                "value": 30000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772104354322",
+                                "name": "Финансист",
+                                "value": 25000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772104365206",
+                                "name": "HR",
+                                "value": 10000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772104404907",
+                                "name": "РОП",
+                                "value": 100000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772112726940",
+                                "name": "Помощник",
+                                "value": 15000,
+                                "unit": "RUB"
+                            },
+                            {
+                                "id": "1772195918957",
+                                "name": "Ассистент маркетолога",
+                                "value": 20000,
+                                "unit": "RUB"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "item-tax-payroll",
+                        "name": "Налоги и взносы (ФОТ)",
+                        "value": 20,
+                        "unit": "PERCENT",
+                        "percentBase": "PAYROLL"
+                    }
+                ]
+            },
+            {
+                "id": "cat-2",
+                "name": "Косвенные (общехозяйственные)",
+                "items": [
+                    {
+                        "id": "item-3",
+                        "name": "Аренда помещений",
+                        "value": 400000,
+                        "unit": "RUB"
+                    },
+                    {
+                        "id": "item-8",
+                        "name": "Связь и интернет",
+                        "value": 40000,
+                        "unit": "RUB"
+                    },
+                    {
+                        "id": "1772111461696",
+                        "name": "Сайт+CRM",
+                        "value": 40000,
+                        "unit": "RUB",
+                        "percentBase": "REVENUE"
+                    }
+                ]
+            },
+            {
+                "id": "cat-3",
+                "name": "Административные и Маркетинг",
+                "items": [
+                    {
+                        "id": "item-4",
+                        "name": "Маркетинг и реклама",
+                        "value": 2,
+                        "unit": "PERCENT",
+                        "percentBase": "REVENUE"
+                    }
+                ]
+            },
+            {
+                "id": "cat-4",
+                "name": "Логистика и сбыт",
+                "items": [
+                    {
+                        "id": "item-11",
+                        "name": "Транспортные расходы",
+                        "value": 4,
+                        "unit": "PERCENT",
+                        "percentBase": "REVENUE"
+                    },
+                    {
+                        "id": "item-12",
+                        "name": "Упаковка",
+                        "value": 0.5,
+                        "unit": "PERCENT",
+                        "percentBase": "REVENUE"
+                    }
+                ]
+            }
+        ]
+    }
+}
