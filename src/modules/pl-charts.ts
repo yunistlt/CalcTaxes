@@ -7,7 +7,8 @@ let charts: { [key: string]: Chart } = {};
 
 export function initPLTab() {
   const tab = document.querySelector<HTMLDivElement>("#pl-tab");
-  if (!tab) return;
+  if (!tab || tab.dataset.initialized) return;
+  tab.dataset.initialized = "true";
 
   // Data Source Controls
   const uploadBtn = tab.querySelector<HTMLButtonElement>("#upload-btn")!;
@@ -20,7 +21,8 @@ export function initPLTab() {
   uploadBtn.addEventListener('click', () => fileInput.click());
   fileInput.addEventListener('change', handleFileUpload);
   googleBtn.addEventListener('click', () => {
-    gsheetContainer.style.display = gsheetContainer.style.display === 'none' ? 'block' : 'none';
+    const isHidden = gsheetContainer.style.display === 'none' || !gsheetContainer.style.display;
+    gsheetContainer.style.display = isHidden ? 'block' : 'none';
   });
   loadGSheetBtn.addEventListener('click', () => handleGSheetLoad(gsheetUrlInput.value));
 

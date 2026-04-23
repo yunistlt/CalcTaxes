@@ -749,8 +749,15 @@ input:focus, select:focus {
   padding: 10px 20px;
   border-radius: 10px;
   cursor: pointer;
-  width: 100%;
   transition: all 0.2s;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+.library-card .btn-secondary {
+  width: 100%;
 }
 
 .btn-secondary:hover {

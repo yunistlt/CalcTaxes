@@ -2,7 +2,8 @@ import { formatWithSpaces, parseFromSpaces } from '../utils';
 
 export function initCalculator() {
   const tab = document.querySelector<HTMLDivElement>("#calculator-tab");
-  if (!tab) return;
+  if (!tab || tab.dataset.initialized) return;
+  tab.dataset.initialized = "true";
 
   const inputs = tab.querySelectorAll<HTMLInputElement | HTMLSelectElement>("input, select");
   inputs.forEach(input => {

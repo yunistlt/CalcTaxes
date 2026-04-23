@@ -11,7 +11,6 @@ console.log('Версия приложения загружена:', new Date().
 app.innerHTML = `
   <div class="tabs-container">
     <button class="tab-btn active" data-tab="calculator">Калькулятор</button>
-    <button class="tab-btn" data-tab="pl">ОПиУ (Графики)</button>
     <button class="tab-btn" data-tab="designer">Конструктор модели</button>
   </div>
 
@@ -269,7 +268,7 @@ app.innerHTML = `
 
         <div id="categories-container" class="categories-list"></div>
 
-        <button id="add-category-btn" class="btn-secondary">+ Добавить категорию</button>
+        <button id="add-category-btn" class="btn-secondary btn-full">+ Добавить категорию</button>
       </div>
 
       <div class="designer-sidebar">
@@ -314,16 +313,9 @@ tabBtns.forEach(btn => {
     tabContents.forEach(c => c.classList.remove('active'))
     btn.classList.add('active')
     document.getElementById(`${tabName}-tab`)!.classList.add('active')
-
-    if (tabName === 'pl') {
-      initPLTab()
-    } else if (tabName === 'designer') {
-      initDesignerTab()
-    }
   })
 })
 
 // Initialize Modules
 initCalculator()
-initPLTab()
 initDesignerTab()

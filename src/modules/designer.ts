@@ -10,7 +10,8 @@ let library: ModelLibrary = {};
 
 export async function initDesignerTab() {
   const tab = document.querySelector<HTMLDivElement>("#designer-tab");
-  if (!tab) return;
+  if (!tab || tab.dataset.initialized) return;
+  tab.dataset.initialized = "true";
 
   // Load Library from public or localStorage
   if (Object.keys(library).length === 0) {
