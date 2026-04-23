@@ -21,6 +21,99 @@
   --accent-green: #3fb950;
   --accent-red: #f85149;
   --accent-orange: #d29922;
+  --tp-ice: #E6EAF5;
+  --tp-dark: #1c2128;
+}
+
+/* Promo Banner TaskPayer */
+.tp-promo-banner {
+  margin-bottom: 2rem;
+  background: linear-gradient(90deg, rgba(88, 166, 255, 0.1) 0%, rgba(63, 185, 80, 0.05) 100%);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 12px 24px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.8s ease;
+}
+
+.tp-promo-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--primary);
+}
+
+.tp-promo-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.tp-promo-text {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tp-promo-tag {
+  background: var(--primary);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tp-promo-text p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #c9d1d9;
+  font-family: 'Inter', sans-serif;
+}
+
+.tp-promo-text strong {
+  color: white;
+  font-weight: 700;
+}
+
+.tp-promo-cta {
+  background: var(--tp-ice);
+  color: var(--tp-dark);
+  padding: 8px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(230, 234, 245, 0.2);
+}
+
+.tp-promo-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(230, 234, 245, 0.3);
+  filter: brightness(1.1);
+}
+
+@media (max-width: 768px) {
+  .tp-promo-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  .tp-promo-text {
+    flex-direction: column;
+    gap: 8px;
+  }
 }
 
 body {
@@ -658,7 +751,7 @@ input:focus, select:focus {
 }
 
 .item-row td {
-  padding: 10px 5px;
+  padding: 10px 3px;
   vertical-align: middle;
 }
 
@@ -668,8 +761,8 @@ input:focus, select:focus {
   border-radius: 4px;
   color: white;
   padding: 4px 8px;
-  width: 120px;
-  /* Увеличено с 80px */
+  width: 90px;
+  /* Уменьшено для экономии места */
   font-family: 'Outfit', sans-serif;
   text-align: right;
 }
@@ -681,13 +774,17 @@ input:focus, select:focus {
 
 .items-table th:nth-child(2),
 .items-table td:nth-child(2) {
-  width: 140px;
+  width: 100px;
+}
+
+.items-table th:nth-child(3),
+.items-table td:nth-child(3) {
+  width: 130px;
 }
 
 .items-table th:nth-child(4),
 .items-table td:nth-child(4) {
-  width: 180px;
-  /* Увеличено для длинных чисел */
+  width: 140px;
   white-space: nowrap;
 }
 
@@ -695,6 +792,9 @@ input:focus, select:focus {
   background: transparent !important;
   border: 1px solid transparent !important;
   padding: 5px !important;
+  width: 100%;
+  flex: 1;
+  min-width: 0;
 }
 
 .item-name-input:hover {
@@ -705,6 +805,16 @@ input:focus, select:focus {
   display: flex;
   align-items: center;
   gap: 5px;
+}
+
+.percent-base-select {
+  background: #161b22;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-dim);
+  font-size: 0.7rem;
+  padding: 2px;
+  cursor: pointer;
 }
 
 .toggle-group {
