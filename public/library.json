@@ -880,5 +880,83 @@
                 ]
             }
         ]
+    },
+    "Модель из PDF (февраль 2026)": {
+        "revenue": 10000000,
+        "categories": [
+            {
+                "id": "cat-1",
+                "name": "Прямые производственные расходы",
+                "items": [
+                    { "id": "item-1", "name": "Сырье и материалы", "value": 40, "unit": "PERCENT", "percentBase": "REVENUE" },
+                    { "id": "item-5", "name": "Энергоресурсы (цех)", "value": 3.5, "unit": "PERCENT", "percentBase": "REVENUE" },
+                    { "id": "item-6", "name": "Расходные инструменты", "value": 1.5, "unit": "PERCENT", "percentBase": "REVENUE" },
+                    { "id": "item-lz", "name": "Лизинг", "value": 200000, "unit": "RUB" }
+                ]
+            },
+            {
+                "id": "cat-payroll",
+                "name": "ФОТ и налоги",
+                "items": [
+                    {
+                        "id": "item-fot-prod",
+                        "name": "Производственный ФОТ",
+                        "value": 0, "unit": "RUB", "isExpanded": true,
+                        "positions": [
+                            { "id": "p1", "name": "Начальник цеха", "value": 90000, "unit": "RUB" },
+                            { "id": "p2", "name": "Мастер смены", "value": 90000, "unit": "RUB" },
+                            { "id": "p3", "name": "Рабочие (оклад)", "value": 13, "unit": "PERCENT" },
+                            { "id": "p4", "name": "Логист", "value": 40000, "unit": "RUB" },
+                            { "id": "p5", "name": "Снабженец", "value": 50000, "unit": "RUB" },
+                            { "id": "p6", "name": "Инженер", "value": 2.5, "unit": "PERCENT" },
+                            { "id": "p7", "name": "Кладовщик", "value": 10000, "unit": "RUB" }
+                        ]
+                    },
+                    {
+                        "id": "item-fot-aup",
+                        "name": "ФОТ АУП и Офис",
+                        "value": 0, "unit": "RUB", "isExpanded": true,
+                        "positions": [
+                            { "id": "a1", "name": "Генеральный директор", "value": 200000, "unit": "RUB" },
+                            { "id": "a2", "name": "Бухгалтер", "value": 150000, "unit": "RUB" },
+                            { "id": "a3", "name": "Менеджер по продажам", "value": 3.9, "unit": "PERCENT" },
+                            { "id": "a4", "name": "Маркетолог", "value": 50000, "unit": "RUB" },
+                            { "id": "a5", "name": "Сис. админ.", "value": 15000, "unit": "RUB" },
+                            { "id": "a6", "name": "Юрист", "value": 30000, "unit": "RUB" },
+                            { "id": "a7", "name": "Финансист", "value": 25000, "unit": "RUB" },
+                            { "id": "a8", "name": "HR", "value": 10000, "unit": "RUB" },
+                            { "id": "a9", "name": "РОП", "value": 100000, "unit": "RUB" },
+                            { "id": "a10", "name": "Помощник", "value": 15000, "unit": "RUB" },
+                            { "id": "a11", "name": "Ассистент маркетолога", "value": 20000, "unit": "RUB" }
+                        ]
+                    },
+                    { "id": "tax-f", "name": "Налоги и взносы (ФОТ)", "value": 20, "unit": "PERCENT", "percentBase": "PAYROLL" }
+                ]
+            },
+            {
+                "id": "cat-cosv",
+                "name": "Косвенные (общехозяйственные)",
+                "items": [
+                    { "id": "c1", "name": "Аренда помещений", "value": 400000, "unit": "RUB" },
+                    { "id": "c2", "name": "Связь и интернет", "value": 40000, "unit": "RUB" },
+                    { "id": "c3", "name": "Сайт+CRM", "value": 40000, "unit": "RUB" }
+                ]
+            },
+            {
+                "id": "cat-adm",
+                "name": "Административные и Маркетинг",
+                "items": [
+                    { "id": "m1", "name": "Маркетинг и реклама", "value": 2, "unit": "PERCENT", "percentBase": "REVENUE" }
+                ]
+            },
+            {
+                "id": "cat-log",
+                "name": "Логистика и сбыт",
+                "items": [
+                    { "id": "l1", "name": "Транспортные расходы", "value": 4, "unit": "PERCENT", "percentBase": "REVENUE" },
+                    { "id": "l2", "name": "Упаковка", "value": 0.5, "unit": "PERCENT", "percentBase": "REVENUE" }
+                ]
+            }
+        ]
     }
 }
