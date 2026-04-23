@@ -1,6 +1,9 @@
 import './style.css'
+import { inject } from '@vercel/analytics'
 import { initCalculator } from './modules/calculator'
 import { initDesignerTab } from './modules/designer'
+
+inject()
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 
