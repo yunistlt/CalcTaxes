@@ -315,7 +315,7 @@ app.innerHTML = `
     <div class="footer-content">
       <span>© 2026 CalcTaxes — Свободный финансовый инструмент</span>
       <div class="footer-stats">
-        <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fyunistlt%2FCalcTaxes&count_bg=%2358A6FF&title_bg=%2330363d&icon=&icon_color=%23E7E7E7&title=визитов&edge_flat=true" alt="Hits" />
+        <img src="https://komarev.com/ghpvc/?username=yunistlt-calctaxes&color=58a6ff&style=flat-square&label=визитов" alt="Hits" />
       </div>
     </div>
   </footer>
