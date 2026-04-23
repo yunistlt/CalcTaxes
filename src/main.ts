@@ -24,23 +24,91 @@ app.innerHTML = `
 
     <div class="calculator-grid">
       <div class="glass-card">
+        <div class="section-title">📊 Основные показатели</div>
         <div class="input-group">
-          <label for="revenue">Годовая выручка (с НДС), ₽</label>
+          <label for="revenue">
+            Годовая выручка (с НДС), ₽
+            <span class="info-icon" data-tooltip="Общая сумма поступлений от клиентов за год. Включает НДС, если вы его выставляете.">i</span>
+          </label>
           <input type="text" id="revenue" placeholder="Например, 10 000 000" value="10 000 000">
         </div>
         
         <div class="input-group">
-          <label for="expenses">Годовые расходы (с НДС), ₽</label>
+          <label for="expenses">
+            Годовые расходы (с НДС), ₽
+            <span class="info-icon" data-tooltip="Все ваши затраты: закупки, аренда, ФОТ, налоги, маркетинг и т.д.">i</span>
+          </label>
           <input type="text" id="expenses" placeholder="Например, 6 000 000" value="6 000 000">
         </div>
-        
+
+        <div class="input-row-grid">
+          <div class="input-group">
+            <label for="vat-share">
+              Доля расходов с НДС, %
+              <span class="info-icon" data-tooltip="Важно для ОСНО! Процент трат у поставщиков, которые работают с НДС.">i</span>
+            </label>
+            <input type="number" id="vat-share" min="0" max="100" value="70">
+          </div>
+          <div class="input-group">
+            <label for="employees">
+              Сотрудники
+              <span class="info-icon" data-tooltip="Количество официально трудоустроенных лиц. Влияет на лимиты режимов.">i</span>
+            </label>
+            <input type="number" id="employees" min="0" max="1000" value="0">
+          </div>
+        </div>
+
+        <div class="section-title" style="margin-top: 1rem;">🏢 Профиль бизнеса</div>
+        <div class="input-row-grid">
+          <div class="input-group">
+            <label for="business-type">
+              Форма бизнеса
+              <span class="info-icon" data-tooltip="ИП платит НДФЛ (13-15%), ООО — Налог на прибыль (20%). ПСН и НПД только для ИП.">i</span>
+            </label>
+            <select id="business-type" class="input-select">
+              <option value="ip">ИП</option>
+              <option value="llc">ООО (Юрлицо)</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="region-type">
+              Регион АУСН
+              <span class="info-icon" data-tooltip="АУСН работает только в Москве, МО, Калуге и Татарстане.">i</span>
+            </label>
+            <select id="region-type" class="input-select">
+              <option value="other">Другие регионы</option>
+              <option value="pilot">Пилотные (Мск, МО...)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="input-row-grid">
+          <div class="input-group">
+            <label for="client-type-share">
+              Выручка от физлиц, %
+              <span class="info-icon" data-tooltip="Для НПД: налог при работе с физлицами — 4%, с юрлицами — 6%.">i</span>
+            </label>
+            <input type="number" id="client-type-share" min="0" max="100" value="50">
+          </div>
+          <div class="input-group">
+            <label for="agri-share">
+              Доля с/х выручки, %
+              <span class="info-icon" data-tooltip="Для ЕСХН: доход от сельхоз-деятельности должен быть не менее 70%.">i</span>
+            </label>
+            <input type="number" id="agri-share" min="0" max="100" value="0">
+          </div>
+        </div>
+
         <div class="input-group">
-          <label for="vat-share">Доля расходов с НДС, %</label>
-          <input type="number" id="vat-share" min="0" max="100" value="70">
+          <label for="psn-potential">
+            Потенциальный доход, ₽
+            <span class="info-icon" data-tooltip="Для ПСН: фиксированная сумма прибыли в год, которую установил ваш регион для вашего вида деятельности.">i</span>
+          </label>
+          <input type="text" id="psn-potential" value="1 000 000">
         </div>
 
         <div class="settings-header" id="settings-toggle">
-          <h2>Настройки ставок</h2>
+          <h2>Ставки и пороги</h2>
           <span class="settings-toggle-icon" id="toggle-icon">▼</span>
         </div>
 
@@ -60,7 +128,7 @@ app.innerHTML = `
             </div>
             <div class="input-group">
               <label>Порог НДС УСН (₽)</label>
-              <input type="text" id="threshold-vat-usn" value="20 000 000" class="input-small">
+              <input type="text" id="threshold-vat-usn" value="60 000 000" class="input-small">
             </div>
             <div class="input-group">
               <label>НДС ОСНО (%)</label>
@@ -79,16 +147,76 @@ app.innerHTML = `
         <div id="recommendation" class="recommendation-alert"></div>
       </div>
     </div>
+
+    <div class="methodology-section glass-card">
+      <h3>📘 Методика расчета и примеры</h3>
+      <div class="methodology-grid">
+        <div class="methodology-item">
+          <h4>Общая система (ОСНО)</h4>
+          <p>Самый сложный расчет. Налог = <strong>(НДС с выручки - НДС с расходов)</strong> + <strong>Налог на прибыль/НДФЛ</strong>.</p>
+          <div class="example-box">
+            <span>Пример:</span> Выручка 1.2 млн (НДС 200к). Расходы 600к, доля с НДС 100% (НДС 100к). 
+            К уплате НДС: 200к - 100к = 100к. Плюс налог на остаток.
+          </div>
+        </div>
+        <div class="methodology-item">
+          <h4>Упрощенка (УСН)</h4>
+          <p><strong>УСН Доходы (6%):</strong> налог со всей выручки. <strong>УСН Д-Р (15%):</strong> налог с разницы Доходы-Расходы.</p>
+          <div class="example-box">
+            <span>Важно:</span> В 2026 году при выручке выше 60 млн ₽ на УСН появляется обязанность платить НДС (5% или 7%).
+          </div>
+        </div>
+        <div class="methodology-item">
+          <h4>Лимиты и ограничения</h4>
+          <ul>
+            <li><strong>НПД (Самозанятость):</strong> до 2.4 млн ₽/год, 0 сотрудников.</li>
+            <li><strong>ПСН (Патент):</strong> до 60 млн ₽/год, до 15 сотрудников.</li>
+            <li><strong>АУСН:</strong> до 60 млн ₽/год, до 5 сотрудников.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div id="pl-tab" class="tab-content">
     <div class="title-container">
       <h1>Отчет ОПиУ</h1>
-      <p class="subtitle">Интерактивные графики на основе данных из Google Таблицы</p>
+      <p class="subtitle">Интерактивный анализ финансовых данных</p>
     </div>
 
-    <div id="pl-loading" class="loading-overlay">Загрузка данных из Google Таблиц...</div>
-    <div id="pl-error" class="loading-overlay" style="display: none; color: var(--accent-red);"></div>
+    <div class="glass-card data-source-card" style="margin-bottom: 2rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div style="flex: 1; min-width: 300px;">
+          <h3 style="margin-top: 0;">1. Загрузите данные</h3>
+          <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 1rem;">
+            Загрузите CSV/Excel или укажите ссылку на Google Таблицу (убедитесь, что доступ открыт по ссылке).
+          </p>
+          <div style="display: flex; gap: 10px;">
+            <button id="upload-btn" class="btn-primary" style="font-size: 0.85rem; padding: 8px 16px;">📁 Загрузить файл</button>
+            <input type="file" id="pl-file-input" style="display: none;" accept=".csv, .xlsx, .xls">
+            <button id="google-sheet-btn" class="btn-secondary" style="font-size: 0.85rem; padding: 8px 16px;">🌐 Google Sheet</button>
+          </div>
+        </div>
+        
+        <div id="gsheet-input-container" style="flex: 1; min-width: 300px; display: none;">
+          <h3>2. Ссылка на таблицу</h3>
+          <div style="display: flex; gap: 10px;">
+            <input type="text" id="gsheet-url" placeholder="https://docs.google.com/spreadsheets/d/..." style="font-size: 0.85rem; padding: 8px 12px; flex: 1;">
+            <button id="load-gsheet-btn" class="btn-primary" style="font-size: 0.85rem; padding: 8px 16px;">Загрузить</button>
+          </div>
+        </div>
+      </div>
+      
+      <div id="data-status" style="margin-top: 1rem; font-size: 0.8rem; color: var(--accent-green); display: none;">
+        ✅ Данные успешно загружены
+      </div>
+    </div>
+
+    <div id="pl-loading" class="loading-overlay" style="display: none;">Загрузка данных...</div>
+    <div id="pl-error" class="loading-overlay" style="display: none; color: var(--accent-red); flex-direction: column; gap: 10px;">
+      <div id="error-message"></div>
+      <button onclick="location.reload()" class="btn-secondary" style="font-size: 0.7rem; padding: 5px 10px;">Сбросить</button>
+    </div>
     
     <div id="charts-container" class="charts-grid" style="display: none;">
       <div class="chart-card" style="grid-column: span 2; height: 500px;">
@@ -205,3 +333,5 @@ tabBtns.forEach(btn => {
 
 // Initialize Modules
 initCalculator()
+initPLTab()
+initDesignerTab()
