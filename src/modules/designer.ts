@@ -317,7 +317,10 @@ function calculateTotalPayroll(): number {
     const name = cat.name.toLowerCase();
     if (name.includes("фот") || name.includes("зарплата") || name.includes("персонал")) {
       cat.items.forEach(item => {
-        total += calculateItemTotal(item);
+        // Break recursion: don't include payroll-based taxes in the payroll total itself
+        if (item.percentBase !== 'PAYROLL') {
+          total += calculateItemTotal(item);
+        }
       });
     }
   });
