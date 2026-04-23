@@ -313,7 +313,7 @@ app.innerHTML = `
 
   <footer class="app-footer">
     <div class="footer-content">
-      <span>© 2026 CalcTaxes — Свободный финансовый инструмент</span>
+      <a href="https://www.zmksoft.ru" target="_blank" class="footer-link">© 2026 ЦехУспех — система управления бизнесом</a>
       <div class="footer-stats">
         <img src="https://komarev.com/ghpvc/?username=yunistlt-calctaxes&color=58a6ff&style=flat-square&label=" alt="Hits" style="height: 28px;" />
       </div>

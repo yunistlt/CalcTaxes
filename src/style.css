@@ -956,6 +956,16 @@ input:focus, select:focus {
   gap: 1rem;
 }
 
+.footer-link {
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-link:hover {
+  color: var(--primary);
+}
+
 .footer-stats img {
   height: 28px;
   vertical-align: middle;
