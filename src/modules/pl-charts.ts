@@ -36,6 +36,7 @@ export function initPLTab() {
   // Render initial charts with empty/mock data
   renderCharts();
   calculateIdealModel(parseFromSpaces(idealRevenueInput.value));
+  generateAIInsight();
 }
 
 async function handleFileUpload(e: Event) {

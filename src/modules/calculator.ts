@@ -47,8 +47,6 @@ function calculate() {
 
   const rateUsn6 = getNum('rate-usn6') / 100;
   const rateUsn15 = getNum('rate-usn15') / 100;
-  const rateVatUsn = getNum('rate-vat-usn') / 100;
-  const thresholdVatUsn = getVal('threshold-vat-usn');
   const rateVatOsno = getNum('rate-vat-osno') / 100;
   const rateIncomeTax = getNum('rate-income-tax') / 100;
 
