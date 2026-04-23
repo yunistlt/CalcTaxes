@@ -310,6 +310,15 @@ app.innerHTML = `
       </div>
     </div>
   </div>
+
+  <footer class="app-footer">
+    <div class="footer-content">
+      <span>© 2026 CalcTaxes — Свободный финансовый инструмент</span>
+      <div class="footer-stats">
+        <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fyunistlt%2FCalcTaxes&count_bg=%2358A6FF&title_bg=%2330363d&icon=&icon_color=%23E7E7E7&title=визитов&edge_flat=true" alt="Hits" />
+      </div>
+    </div>
+  </footer>
 `
 
 // Tab Switching Control
