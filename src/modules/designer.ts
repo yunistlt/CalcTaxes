@@ -237,7 +237,11 @@ function renderItemRow(item: ModelItem, catIndex: number, itemIndex: number): HT
   row.querySelectorAll(".toggle-btn").forEach(btn => {
     btn.addEventListener('click', () => {
       const unit = (btn as HTMLElement).dataset.unit as 'RUB' | 'PERCENT';
-      currentModel.categories[catIndex].items[itemIndex].unit = unit;
+      const item = currentModel.categories[catIndex].items[itemIndex];
+      item.unit = unit;
+      if (unit === 'PERCENT' && !item.percentBase) {
+        item.percentBase = 'REVENUE';
+      }
       renderModel();
     });
   });
@@ -329,11 +333,13 @@ function calculateItemTotal(item: ModelItem): number {
 
   if (item.unit === 'RUB') return item.value;
   
-  if (item.percentBase === 'REVENUE') {
+  const base = item.percentBase || 'REVENUE';
+  
+  if (base === 'REVENUE') {
     return Math.round(currentModel.revenue * (item.value / 100));
   }
   
-  if (item.percentBase === 'PAYROLL') {
+  if (base === 'PAYROLL') {
     const totalPayroll = calculateTotalPayroll();
     return Math.round(totalPayroll * (item.value / 100));
   }
