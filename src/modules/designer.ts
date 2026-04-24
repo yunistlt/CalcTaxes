@@ -123,19 +123,21 @@ function renderModel() {
         <input type="text" value="${category.name}" data-cat-index="${catIndex}" class="cat-name-input">
         <button class="btn-icon delete-cat" data-cat-index="${catIndex}">🗑️</button>
       </div>
-      <table class="items-table">
-        <thead>
-          <tr>
-            <th>Наименование</th>
-            <th>Тип</th>
-            <th>Значение</th>
-            <th>Итого, ₽</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody class="items-body" data-cat-index="${catIndex}">
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="items-table">
+          <thead>
+            <tr>
+              <th>Наименование</th>
+              <th>Тип</th>
+              <th>Значение</th>
+              <th>Итого, ₽</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody class="items-body" data-cat-index="${catIndex}">
+          </tbody>
+        </table>
+      </div>
       <button class="btn-secondary add-item-btn" data-cat-index="${catIndex}" style="margin-top: 10px; width: auto; font-size: 0.8rem;">+ Добавить строку</button>
     `;
 

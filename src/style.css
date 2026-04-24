@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 :root {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   line-height: 1.5;
@@ -104,6 +108,9 @@
 }
 
 @media (max-width: 768px) {
+  .tp-promo-banner {
+    padding: 12px 16px;
+  }
   .tp-promo-content {
     flex-direction: column;
     text-align: center;
@@ -118,10 +125,10 @@
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
-  background: radial-gradient(circle at top right, #161b22, #0d1117);
+  background: radial-gradient(circle at center top, #161b22, #0d1117);
 }
 
 #app {
@@ -129,6 +136,12 @@ body {
   margin: 0 auto;
   padding: 2rem;
   width: 100%;
+}
+
+@media (max-width: 480px) {
+  #app {
+    padding: 1rem;
+  }
 }
 
 .tabs-container {
@@ -143,6 +156,15 @@ body {
   margin-left: auto;
   margin-right: auto;
   border: 1px solid rgba(255, 255, 255, 0.05);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .tabs-container {
+    gap: 0.5rem;
+    padding: 6px;
+    margin-bottom: 2rem;
+  }
 }
 
 .tab-btn {
@@ -157,6 +179,13 @@ body {
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   font-family: 'Outfit', sans-serif;
   letter-spacing: 0.02em;
+}
+
+@media (max-width: 600px) {
+  .tab-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
 }
 
 .tab-btn:hover {
@@ -188,7 +217,7 @@ body {
 
 h1 {
   font-family: 'Outfit', sans-serif;
-  font-size: 3.2em;
+  font-size: 3.2rem;
   line-height: 1.1;
   margin-bottom: 0.5rem;
   background: linear-gradient(135deg, #fff 0%, #8b949e 100%);
@@ -196,6 +225,15 @@ h1 {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: -0.02em;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
 }
 
 .subtitle {
@@ -225,6 +263,12 @@ h1 {
   padding: 2rem;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+@media (max-width: 480px) {
+  .glass-card {
+    padding: 1.2rem;
+  }
 }
 
 .glass-card:hover {
@@ -281,6 +325,13 @@ input:focus, select:focus {
   gap: 1rem;
 }
 
+@media (max-width: 600px) {
+  .input-row-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
 .section-title {
   font-size: 0.9rem;
   font-weight: 700;
@@ -314,6 +365,18 @@ input:focus, select:focus {
   background: rgba(48, 54, 61, 0.4);
   transform: translateX(5px);
   border-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 600px) {
+  .result-card {
+    padding: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .result-card:hover {
+    transform: none;
+  }
 }
 
 .result-card.best {
@@ -678,6 +741,13 @@ input:focus, select:focus {
 }
 
 /* Designer Tab Styles */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1rem;
+}
+
 .designer-layout {
   display: grid;
   grid-template-columns: 1fr 350px;
@@ -729,6 +799,8 @@ input:focus, select:focus {
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border-color);
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .category-header input {
