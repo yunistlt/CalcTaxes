@@ -210,7 +210,7 @@ function renderItemRow(item: ModelItem, catIndex: number, itemIndex: number): HT
       `}
     </td>
     <td>
-      ${(item.positions && item.positions.length > 0) ? formatWithSpaces(total) : `
+      ${(item.positions && item.positions.length > 0) ? `<span class="item-value-span">${formatWithSpaces(total)}</span>` : `
         <div class="item-value-cell">
           <input type="text" value="${item.unit === 'RUB' ? formatWithSpaces(item.value) : item.value}" class="item-value-input">
           ${item.unit === 'PERCENT' ? `
@@ -290,7 +290,7 @@ function renderPositionRow(pos: ModelPosition, catIndex: number, itemIndex: numb
     <td>
       <input type="text" value="${pos.unit === 'RUB' ? formatWithSpaces(pos.value) : pos.value}" class="item-value-input" style="width: 100px; font-size: 0.85rem;">
     </td>
-    <td style="font-size: 0.85rem; opacity: 0.8;">${formatWithSpaces(total)}</td>
+    <td class="position-total-cell" style="font-size: 0.85rem; opacity: 0.8;">${formatWithSpaces(total)}</td>
     <td><button class="btn-icon delete-pos">×</button></td>
   `;
 
@@ -406,14 +406,31 @@ function recalculate() {
   `;
 
   // Update item totals in the current DOM
-  const rows = document.querySelectorAll(".item-row:not(.position-row)");
+  const rows = document.querySelectorAll(".item-row");
   let rowIndex = 0;
   currentModel.categories.forEach(cat => {
     cat.items.forEach(item => {
+      const itemRow = rows[rowIndex++];
       const total = calculateItemTotal(item);
-      const cell = rows[rowIndex]?.querySelector(".item-total-cell");
-      if (cell) cell.textContent = formatWithSpaces(total);
-      rowIndex++;
+      
+      if (itemRow) {
+        const totalCell = itemRow.querySelector(".item-total-cell");
+        if (totalCell) totalCell.textContent = formatWithSpaces(total);
+        
+        const valueSpan = itemRow.querySelector(".item-value-span");
+        if (valueSpan) valueSpan.textContent = formatWithSpaces(total);
+      }
+      
+      if (item.isExpanded && item.positions) {
+        item.positions.forEach(pos => {
+          const posRow = rows[rowIndex++];
+          const posTotal = pos.unit === 'RUB' ? pos.value : Math.round(currentModel.revenue * (pos.value / 100));
+          if (posRow) {
+            const posTotalCell = posRow.querySelector(".position-total-cell");
+            if (posTotalCell) posTotalCell.textContent = formatWithSpaces(posTotal);
+          }
+        });
+      }
     });
   });
 
