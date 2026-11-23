@@ -268,6 +268,7 @@ app.innerHTML = `
     <div class="title-container">
       <h1>Конструктор бизнес-модели <span style="font-size: 0.8rem; vertical-align: middle; opacity: 0.5;">v1.0.5</span></h1>
       <p class="subtitle">Создайте свою структуру доходов и расходов</p>
+      <p id="current-model-name" class="current-model-name"></p>
     </div>
 
     <div class="designer-layout">

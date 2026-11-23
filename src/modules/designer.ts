@@ -10,6 +10,12 @@ let currentModel: FinancialModel = {
 
 let library: ModelLibrary = {};
 
+function setModelName(name: string) {
+  try { localStorage.setItem('currentModelName', name); } catch { /* ignore */ }
+  const el = document.getElementById('current-model-name');
+  if (el) el.textContent = name ? `Модель: ${name}` : '';
+}
+
 export async function initDesignerTab() {
   const tab = document.querySelector<HTMLDivElement>("#designer-tab");
   if (!tab || tab.dataset.initialized) return;
@@ -21,8 +27,10 @@ export async function initDesignerTab() {
   const savedModel = localStorage.getItem('currentModel');
   if (savedModel) {
     currentModel = JSON.parse(savedModel);
+    setModelName(localStorage.getItem('currentModelName') || '');
   } else if (Object.keys(library).length > 0) {
     currentModel = JSON.parse(JSON.stringify(library[Object.keys(library)[0]]));
+    setModelName(Object.keys(library)[0]);
   }
 
   setupEventListeners(tab);
@@ -50,6 +58,7 @@ function setupEventListeners(tab: HTMLDivElement) {
     const nameInput = document.querySelector<HTMLInputElement>("#new-model-name")!;
     const name = nameInput.value.trim() || `Модель ${new Date().toLocaleTimeString()}`;
     library[name] = JSON.parse(JSON.stringify(currentModel));
+    setModelName(name);
     renderLibraryList();
     nameInput.value = "";
     saveToLocalStorage();
@@ -92,6 +101,7 @@ function setupEventListeners(tab: HTMLDivElement) {
         const json = JSON.parse(event.target?.result as string);
         if (json.categories && json.revenue !== undefined) {
           currentModel = json;
+          setModelName(file.name.replace(/\.json$/i, ''));
           const revInput = document.querySelector<HTMLInputElement>("#model-revenue");
           if (revInput) revInput.value = formatWithSpaces(currentModel.revenue);
           renderModel();
@@ -419,6 +429,7 @@ function renderLibraryList() {
     item.onclick = (e) => {
       if ((e.target as HTMLElement).classList.contains('delete-model')) return;
       currentModel = JSON.parse(JSON.stringify(library[name]));
+      setModelName(name);
       const revInput = document.querySelector<HTMLInputElement>("#model-revenue");
       if (revInput) revInput.value = formatWithSpaces(currentModel.revenue);
       renderModel();
