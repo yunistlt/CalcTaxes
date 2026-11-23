@@ -118,6 +118,7 @@ function renderModel() {
     catBlock.innerHTML = `
       <div class="category-header">
         <input type="text" value="${category.name}" data-cat-index="${catIndex}" class="cat-name-input">
+        <span class="cat-total" data-cat-index="${catIndex}"></span>
         <button class="btn-icon delete-cat" data-cat-index="${catIndex}">🗑️</button>
       </div>
       <div class="table-responsive">
@@ -337,10 +338,14 @@ function recalculate() {
   let totalExpenses = 0;
   let totalPayroll = calculateTotalPayroll();
   
-  currentModel.categories.forEach(cat => {
+  currentModel.categories.forEach((cat, catIndex) => {
+    let catTotal = 0;
     cat.items.forEach(item => {
-      totalExpenses += calculateItemTotal(item);
+      catTotal += calculateItemTotal(item);
     });
+    totalExpenses += catTotal;
+    const catTotalEl = document.querySelector(`.cat-total[data-cat-index="${catIndex}"]`);
+    if (catTotalEl) catTotalEl.textContent = `Итого: ${formatWithSpaces(catTotal)} ₽`;
   });
 
   const profit = currentModel.revenue - totalExpenses;

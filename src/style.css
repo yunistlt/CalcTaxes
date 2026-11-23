@@ -804,6 +804,8 @@ input:focus, select:focus {
 }
 
 .category-header input {
+  flex: 1;
+  min-width: 0;
   background: transparent;
   border: none;
   font-size: 1.2rem;
@@ -1041,4 +1043,11 @@ input:focus, select:focus {
 .footer-stats img {
   height: 28px;
   vertical-align: middle;
+}
+.cat-total {
+  margin-left: auto;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
 }
