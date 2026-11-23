@@ -298,6 +298,7 @@ app.innerHTML = `
           <button id="export-json-btn" class="btn-secondary" style="width: 100%; font-size: 0.8rem; border-style: dashed;">📌 Сохранить в файл (JSON)</button>
           <button id="import-json-btn" class="btn-secondary" style="width: 100%; font-size: 0.8rem; border-style: dashed; margin-top: 10px;">📂 Загрузить из файла (JSON)</button>
           <input type="file" id="import-json-input" style="display: none;" accept=".json">
+          <button id="cloud-btn" class="btn-secondary" style="width: 100%; font-size: 0.8rem; border-style: dashed; margin-top: 10px;">☁️ Подключить облако</button>
           <button id="export-pdf-btn" class="btn-secondary" style="width: 100%; font-size: 0.8rem; border-style: dashed; margin-top: 10px;">📄 Сохранить в PDF</button>
         </div>
 

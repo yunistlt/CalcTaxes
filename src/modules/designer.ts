@@ -1,5 +1,7 @@
 import type { FinancialModel, ModelLibrary, ModelItem, ModelPosition } from '../types';
 import { formatWithSpaces, parseFromSpaces, generateId } from '../utils';
+import { calculateItemTotal as calcItemTotal, calculateTotalPayroll as calcTotalPayroll } from '../core/model';
+import { cloudEnabled, cloudLoad, cloudSave, setCloudKey } from '../core/cloud';
 
 let currentModel: FinancialModel = {
   revenue: 10000000,
@@ -13,16 +15,7 @@ export async function initDesignerTab() {
   if (!tab || tab.dataset.initialized) return;
   tab.dataset.initialized = "true";
 
-  // Load Library from public or localStorage
-  if (Object.keys(library).length === 0) {
-    try {
-      const response = await fetch('/library.json');
-      library = await response.json();
-    } catch (e) {
-      const savedLib = localStorage.getItem('modelLibrary');
-      if (savedLib) library = JSON.parse(savedLib);
-    }
-  }
+  await loadLibrary();
 
   // Current Model Priority: localStorage > Library[0] > Default
   const savedModel = localStorage.getItem('currentModel');
@@ -33,6 +26,7 @@ export async function initDesignerTab() {
   }
 
   setupEventListeners(tab);
+  updateCloudButton();
   renderLibraryList();
   renderModel();
 }
@@ -59,7 +53,10 @@ function setupEventListeners(tab: HTMLDivElement) {
     renderLibraryList();
     nameInput.value = "";
     saveToLocalStorage();
+    syncLibrary();
   });
+
+  tab.querySelector("#cloud-btn")?.addEventListener('click', () => { toggleCloud(); });
 
   tab.querySelector("#recalculate-btn")?.addEventListener('click', () => {
     recalculate();
@@ -326,43 +323,11 @@ function renderPositionRow(pos: ModelPosition, catIndex: number, itemIndex: numb
 }
 
 function calculateItemTotal(item: ModelItem): number {
-  if (item.positions && item.positions.length > 0) {
-    return item.positions.reduce((sum, pos) => {
-      if (pos.unit === 'RUB') return sum + pos.value;
-      return sum + Math.round(currentModel.revenue * (pos.value / 100));
-    }, 0);
-  }
-
-  if (item.unit === 'RUB') return item.value;
-  
-  const base = item.percentBase || 'REVENUE';
-  
-  if (base === 'REVENUE') {
-    return Math.round(currentModel.revenue * (item.value / 100));
-  }
-  
-  if (base === 'PAYROLL') {
-    const totalPayroll = calculateTotalPayroll();
-    return Math.round(totalPayroll * (item.value / 100));
-  }
-  
-  return 0;
+  return calcItemTotal(currentModel, item);
 }
 
 function calculateTotalPayroll(): number {
-  let total = 0;
-  currentModel.categories.forEach(cat => {
-    const name = cat.name.toLowerCase();
-    if (name.includes("фот") || name.includes("зарплата") || name.includes("персонал")) {
-      cat.items.forEach(item => {
-        // Break recursion: don't include payroll-based taxes in the payroll total itself
-        if (item.percentBase !== 'PAYROLL') {
-          total += calculateItemTotal(item);
-        }
-      });
-    }
-  });
-  return total;
+  return calcTotalPayroll(currentModel);
 }
 
 function recalculate() {
@@ -458,6 +423,7 @@ function renderLibraryList() {
       delete library[name];
       renderLibraryList();
       saveToLocalStorage();
+      syncLibrary();
     });
     list.appendChild(item);
   });
@@ -466,4 +432,62 @@ function renderLibraryList() {
 function saveToLocalStorage() {
   localStorage.setItem('currentModel', JSON.stringify(currentModel));
   localStorage.setItem('modelLibrary', JSON.stringify(library));
+}
+
+let lastSavedLibrary = '';
+
+// Библиотека: облако (если задан ключ) > localStorage > /library.json
+async function loadLibrary() {
+  if (cloudEnabled()) {
+    try {
+      const remote = await cloudLoad();
+      if (remote) { library = remote; lastSavedLibrary = JSON.stringify(library); return; }
+    } catch (e) {
+      console.error(e);
+      alert('Не удалось загрузить библиотеку из облака, показана локальная копия.');
+    }
+  }
+  const savedLib = localStorage.getItem('modelLibrary');
+  if (savedLib) { library = JSON.parse(savedLib); return; }
+  try {
+    library = await (await fetch('/library.json')).json();
+  } catch { library = {}; }
+}
+
+function syncLibrary() {
+  if (!cloudEnabled()) return;
+  const snapshot = JSON.stringify(library);
+  if (snapshot === lastSavedLibrary) return;
+  lastSavedLibrary = snapshot;
+  cloudSave(library).catch(e => { console.error(e); alert('Не удалось сохранить библиотеку в облако.'); });
+}
+
+function updateCloudButton() {
+  const btn = document.getElementById('cloud-btn');
+  if (btn) btn.textContent = cloudEnabled() ? '☁️ Облако подключено (отключить)' : '☁️ Подключить облако';
+}
+
+async function toggleCloud() {
+  if (cloudEnabled()) {
+    setCloudKey(null);
+    updateCloudButton();
+    return;
+  }
+  const key = prompt('Ключ доступа к облачной библиотеке:')?.trim();
+  if (!key) return;
+  setCloudKey(key);
+  try {
+    const remote = await cloudLoad();
+    if (remote && Object.keys(remote).length > 0) {
+      library = { ...library, ...remote };
+    }
+    lastSavedLibrary = '';
+    syncLibrary();
+    renderLibraryList();
+    saveToLocalStorage();
+  } catch (e) {
+    setCloudKey(null);
+    alert('Ключ не подошёл или облако недоступно.');
+  }
+  updateCloudButton();
 }
