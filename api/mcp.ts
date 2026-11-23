@@ -6,7 +6,7 @@ const json = (data: unknown, status = 200) =>
   new Response(JSON.stringify(data), { status, headers: { 'Content-Type': 'application/json' } });
 
 const INSTRUCTIONS =
-  'Коннектор к калькулятору финмодели CalcTaxes. Суммы — рубли в год. Строка расходов: unit RUB (сумма) или PERCENT ' +
+  'Коннектор к калькулятору финмодели CalcTaxes. Суммы — рубли в месяц. Строка расходов: unit RUB (сумма) или PERCENT ' +
   '(процент от выручки, либо от ФОТ при percentBase=PAYROLL). ФОТ — сумма строк категорий, в названии которых есть «ФОТ», ' +
   '«зарплата» или «персонал» (кроме строк от ФОТ). Начинай с list_models → get_model. Для прикидок без сохранения — calculate и scan_revenue. ' +
   'Правки сохраняются сразу и видны на сайте после обновления страницы.';

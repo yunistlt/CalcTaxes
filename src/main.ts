@@ -274,7 +274,7 @@ app.innerHTML = `
       <div class="designer-main">
         <div class="glass-card revenue-card">
           <div class="input-group">
-            <label for="model-revenue">Годовая выручка, ₽</label>
+            <label for="model-revenue">Выручка в месяц, ₽</label>
             <input type="text" id="model-revenue" value="10 000 000" class="input-large">
           </div>
         </div>

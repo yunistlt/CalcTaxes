@@ -36,7 +36,7 @@ function validate(m: any): FinancialModel {
 
 const withResult = (name: string | null, model: FinancialModel) => ({ name, model, result: computeModel(model) });
 
-const unitSchema = { type: 'string', enum: ['RUB', 'PERCENT'], description: 'RUB — сумма в рублях за год, PERCENT — процент' };
+const unitSchema = { type: 'string', enum: ['RUB', 'PERCENT'], description: 'RUB — сумма в рублях за месяц, PERCENT — процент' };
 const baseSchema = { type: 'string', enum: ['REVENUE', 'PAYROLL'], description: 'База процента: REVENUE — от выручки, PAYROLL — от ФОТ (для взносов)' };
 const modelSchema = { type: 'object', description: 'Финмодель: { revenue, categories: [{ name, items: [{ name, value, unit, percentBase?, positions?: [{ name, value, unit }] }] }] }' };
 
@@ -107,7 +107,7 @@ export const TOOLS = [
   },
   {
     name: 'set_revenue',
-    description: 'Изменить годовую выручку модели и сохранить.',
+    description: 'Изменить месячную выручку модели и сохранить.',
     inputSchema: { type: 'object', properties: { name: { type: 'string' }, revenue: { type: 'number' } }, required: ['name', 'revenue'] },
     run: async (a: any) => { const m = await getModel(a.name); m.revenue = a.revenue; await putModel(a.name, m); return withResult(a.name, m); },
   },
